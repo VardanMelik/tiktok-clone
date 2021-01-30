@@ -6,7 +6,8 @@ Frontend
 2) Material UI
 3) Firebase
 4) Flexbox
-5) Ticker
+5) React Ticker
+   https://www.npmjs.com/package/react-ticker
 6) Scroll Snap
 
 Backend
