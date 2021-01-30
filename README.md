@@ -10,7 +10,9 @@ Frontend
 6) Scroll Snap
 
 Backend
+
 7) MongoDB Database
-8) Nodejs
-9) Express framework
-10) Heroku
+8) Mongoose
+9) Nodejs
+10) Express framework
+11) Heroku
