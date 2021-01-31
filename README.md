@@ -17,3 +17,6 @@ Backend
 9) Nodejs
 10) Express framework
 11) Heroku
+
+Firebase hosting:
+https://tiktok-clone-1ea75.web.app/
