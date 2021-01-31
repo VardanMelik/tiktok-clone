@@ -5,7 +5,7 @@ import axios from './axios';
 
 function App() {
   const [videos, setVideos] = useState([]);
-  const keyNumber = 1;
+
 
   useEffect( () => {
     async function fetchPosts () {
@@ -23,9 +23,10 @@ function App() {
     // BEM
     <div className="app">
       <div className="app__videos">
-        {videos.map(( {url, channel, description, song, likes, 
+        {videos.map(( { _id, url, channel, description, song, likes, 
             messages, shares}) => (
           <Video
+            key={_id}
             url={url}
             channel={channel}
             description={channel}
