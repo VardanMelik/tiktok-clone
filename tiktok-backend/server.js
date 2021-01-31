@@ -15,6 +15,27 @@ const port = process.env.port || 9000;
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 
+// Add headers
+app.use(function (req, res, next) {
+
+    // Website you wish to allow to connect
+    //res.setHeader('Access-Control-Allow-Origin', 'http://localhost:8888');
+    res.setHeader('Access-Control-Allow-Origin', '*');
+
+    // Request methods you wish to allow
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+
+    // Request headers you wish to allow
+    //res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
+    res.setHeader('Access-Control-Allow-Headers', '*');
+
+    // Set to true if you need the website to include cookies in the requests sent
+    // to the API (e.g. in case you use sessions)
+    res.setHeader('Access-Control-Allow-Credentials', true);
+
+    // Pass to next layer of middleware
+    next();
+});
 // Express Middleware
 //app.use(express.json());
 
@@ -43,14 +64,21 @@ mongoose.connect(
 // Get endpoints 
 app.get('/', (req, res) => {
     //res.status(200).send('Hello world');
-    res.json(data);
+    //res.json(data);
 })
 
 app.get('/v1/posts', (req, res) => {
-    res.json(data);
+    //res.json(data);
 })
 
+// Find videos
+app.get('/v2/posts', (req, res) => {
+    Videos.find()
+        .then( data => res.json(data))
+        .catch( error => console.log(error))
+})
 
+// Create new videos
 app.post('/v2/posts', (req, res) => {
     // Post to add new data to database
     const dbVideos = req.body;
