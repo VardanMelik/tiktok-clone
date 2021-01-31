@@ -1,15 +1,14 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser')
-const data = require('./data');
-const Videos = require('./dbModel');
-const { response } = require('express');
+const data = require('./data.js');
+const Videos = require('./dbModel.js');
 
 
 
 // App config
 const app = express();
-const port = process.env.port || 9000;
+const port = process.env.PORT || 9000;
 
 // Body-Parser Middlewares
 app.use(bodyParser.urlencoded({extended: true}));
@@ -64,16 +63,16 @@ mongoose.connect(
 // Get endpoints 
 app.get('/', (req, res) => {
     //res.status(200).send('Hello world');
-    //res.json(data);
+    res.json(data);
 })
 
 app.get('/v1/posts', (req, res) => {
-    //res.json(data);
+    res.json(data);
 })
 
 // Find videos
 app.get('/v2/posts', (req, res) => {
-    Videos.find()
+    Videos.find({})
         .then( data => res.json(data))
         .catch( error => console.log(error))
 })
